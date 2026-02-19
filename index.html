@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Enzo RPS Showdown</title>
+  <meta name="description" content="Enzo RPS Showdown - Rock Paper Scissors web game" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="bg-grid" aria-hidden="true"></div>
+
+  <main class="app" role="main">
+    <!-- MENU SCREEN -->
+    <section id="menuScreen" class="screen screen--active" aria-label="Menu Screen">
+      <div class="card card--menu">
+        <div class="pixel-badge" aria-hidden="true">★</div>
+
+        <h1 class="title">Enzo RPS Showdown</h1>
+        <p class="subtitle">Rock • Paper • Scissors</p>
+
+        <div class="menu-buttons">
+          <button id="startBtn" class="btn btn--primary" type="button">
+            <span class="btn__icon">▶</span>
+            Start Game
+          </button>
+
+          <button id="creditsBtn" class="btn btn--secondary" type="button">
+            <span class="btn__icon">✦</span>
+            Credits
+          </button>
+        </div>
+
+        <p class="hint">Tip: Pick Rock, Paper, or Scissors to battle the computer!</p>
+      </div>
+    </section>
+
+    <!-- GAME SCREEN -->
+    <section id="gameScreen" class="screen" aria-label="Game Screen">
+      <header class="topbar">
+        <div class="topbar__left">
+          <div class="logo-chip">
+            <span class="logo-chip__star" aria-hidden="true">★</span>
+            <span class="logo-chip__text">Enzo RPS</span>
+          </div>
+        </div>
+
+        <div class="topbar__right">
+          <button id="backToMenuBtn" class="btn btn--ghost" type="button" title="Back to Menu">
+            ← Menu
+          </button>
+        </div>
+      </header>
+
+      <div class="card card--game">
+        <h2 class="section-title">Choose Your Move!</h2>
+
+        <div class="choices" role="group" aria-label="Player Choices">
+          <button class="choice-btn" data-choice="rock" type="button">
+            <span class="emoji" aria-hidden="true">🪨</span>
+            <span class="label">Rock</span>
+          </button>
+
+          <button class="choice-btn" data-choice="paper" type="button">
+            <span class="emoji" aria-hidden="true">📄</span>
+            <span class="label">Paper</span>
+          </button>
+
+          <button class="choice-btn" data-choice="scissors" type="button">
+            <span class="emoji" aria-hidden="true">✂️</span>
+            <span class="label">Scissors</span>
+          </button>
+        </div>
+
+        <div class="arena" aria-live="polite">
+          <div class="arena__col">
+            <div class="arena__title">You</div>
+            <div id="playerChoice" class="arena__pick">—</div>
+          </div>
+
+          <div class="arena__vs" aria-hidden="true">
+            <span class="vs-burst">VS</span>
+          </div>
+
+          <div class="arena__col">
+            <div class="arena__title">Computer</div>
+            <div id="computerChoice" class="arena__pick">—</div>
+          </div>
+        </div>
+
+        <div id="resultText" class="result result--idle" aria-live="polite">
+          Make your first pick!
+        </div>
+
+        <div class="scoreboard" aria-label="Scoreboard">
+          <div class="score">
+            <div class="score__label">Player</div>
+            <div id="playerScore" class="score__value">0</div>
+          </div>
+
+          <div class="score">
+            <div class="score__label">Computer</div>
+            <div id="computerScore" class="score__value">0</div>
+          </div>
+
+          <div class="score">
+            <div class="score__label">Ties</div>
+            <div id="tiesScore" class="score__value">0</div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="playAgainBtn" class="btn btn--secondary" type="button">
+            <span class="btn__icon" aria-hidden="true">↻</span>
+            Play Again
+          </button>
+
+          <button id="resetBtn" class="btn btn--danger" type="button">
+            <span class="btn__icon" aria-hidden="true">⟲</span>
+            Reset Score
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREDITS MODAL -->
+    <div id="creditsModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="creditsTitle" aria-hidden="true">
+      <div class="modal__backdrop" data-close="true"></div>
+      <div class="modal__panel" role="document">
+        <h3 id="creditsTitle" class="modal__title">Credits</h3>
+        <p class="modal__text"><strong>GameMaker:</strong> Enzo</p>
+
+        <button id="creditsBackBtn" class="btn btn--primary" type="button">
+          Back
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>
